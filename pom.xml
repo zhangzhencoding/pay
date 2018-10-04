@@ -1,0 +1,312 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.zz.pay</groupId>
+    <artifactId>pay</artifactId>
+    <packaging>pom</packaging>
+    <version>1.0-SNAPSHOT</version>
+    <modules>
+        <module>pay-interface</module>
+        <module>pay-service</module>
+        <module>pay-web</module>
+    </modules>
+
+    <properties>
+        <project.build.targetName>pay</project.build.targetName>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <!--maven properties -->
+        <maven.test.skip>true</maven.test.skip>
+        <downloadSources>true</downloadSources>
+        <!--java compile version -->
+        <java_source.version>1.8</java_source.version>
+        <java_target.version>1.8</java_target.version>
+        <springframework.version>4.1.2.RELEASE</springframework.version>
+        <aspectj.version>1.8.4</aspectj.version>
+        <jackson.version>2.4.1</jackson.version>
+        <cglib.version>3.1</cglib.version>
+        <javax.validation.version>1.1.0.Final</javax.validation.version>
+        <hibernate-validator.version>5.1.3.Final</hibernate-validator.version>
+        <mybatis.version>3.2.8</mybatis.version>
+        <mybatis-spring.version>1.2.2</mybatis-spring.version>
+        <mysql-connector.version>5.1.31</mysql-connector.version>
+        <!-- <spring-data-redis.version>1.4.1.RELEASE</spring-data-redis.version> -->
+        <spring-data-redis.version>1.8.1.RELEASE</spring-data-redis.version>
+        <apache-httpclient>4.3.6</apache-httpclient>
+        <!-- <jedis.version>2.6.1</jedis.version> -->
+        <jedis.version>2.8.0</jedis.version>
+        <commons-lang3.version>3.3</commons-lang3.version>
+        <commons-io.version>2.4</commons-io.version>
+        <commons-codec.version>1.10</commons-codec.version>
+        <quartz.version>2.2.1</quartz.version>
+
+        <slf4j.version>1.7.5</slf4j.version>
+        <logback.version>1.0.13</logback.version>
+        <junit4.version>4.11</junit4.version>
+        <org-mockito.version>1.10.17</org-mockito.version>
+        <amqp-client.version>3.3.4</amqp-client.version>
+        <commons-lang.version>2.6</commons-lang.version>
+        <jetty-maven-plugin.version>8.1.8.v20121106</jetty-maven-plugin.version>
+        <tomcat7-maven-plugin.version>2.2</tomcat7-maven-plugin.version>
+        <woodstox.version>4.4.1</woodstox.version>
+        <ftpclient.varsion>2.13.2</ftpclient.varsion>
+        <springfox.version>2.6.1</springfox.version>
+        <protostuff-core-version>1.0.12</protostuff-core-version>
+
+    </properties>
+
+    <dependencies>
+        <!-- Test : Junit -->
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>${junit4.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
+            <version>${springframework.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.alipay.sdk</groupId>
+            <artifactId>alipay-sdk-java</artifactId>
+            <version>3.3.87.ALL</version>
+        </dependency>
+
+        <dependency>
+            <groupId>janino</groupId>
+            <artifactId>janino</artifactId>
+            <version>2.4.0</version>
+        </dependency>
+    </dependencies>
+    <!--私服仓库-->
+    <repositories>
+        <repository>
+            <id>nexus</id>
+            <name>nexus</name>
+            <url>http://maven.aliyun.com/nexus/content/groups/public/</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+                <updatePolicy>always</updatePolicy>
+                <checksumPolicy>warn</checksumPolicy>
+            </snapshots>
+        </repository>
+    </repositories>
+    <pluginRepositories>
+        <pluginRepository>
+            <id>nexus</id>
+            <name>nexus</name>
+            <url>http://maven.aliyun.com/nexus/content/groups/public/</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </pluginRepository>
+    </pluginRepositories>
+
+    <profiles>
+        <profile>
+            <id>env</id>
+            <properties>
+                <env>${env}</env>
+            </properties>
+        </profile>
+        <profile>
+            <id>local</id>
+            <properties>
+                <env>local</env>
+                <!-- <jdbc.url>jdbc:mysql://192.168.188.39:3306/sljr_pay</jdbc.url>
+                <jdbc.username>zz</jdbc.username>
+                <jdbc.password>zz</jdbc.password> -->
+                <swagger.flag>true</swagger.flag>
+            </properties>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+        </profile>
+
+        <profile>
+            <id>dev</id>
+            <properties>
+                <env>dev</env>
+                <!-- <jdbc.url>jdbc:mysql://192.168.188.39:3306/sljr_pay</jdbc.url>
+                <jdbc.username>zz</jdbc.username>
+                <jdbc.password>zz</jdbc.password> -->
+                <swagger.flag>true</swagger.flag>
+            </properties>
+        </profile>
+
+        <profile>
+            <id>sit</id>
+            <properties>
+                <env>sit</env>
+                <!-- <jdbc.url>jdbc:mysql://192.168.188.130:3306/sljr_pay</jdbc.url>
+                <jdbc.username>zz</jdbc.username>
+                <jdbc.password>zzt&amp;r6</jdbc.password> -->
+                <swagger.flag>true</swagger.flag>
+            </properties>
+        </profile>
+
+        <profile>
+            <id>sit2</id>
+            <properties>
+                <env>sit2</env>
+                <!-- <jdbc.url>jdbc:mysql://192.168.188.130:3306/sljr_pay</jdbc.url>
+                <jdbc.username>zz</jdbc.username>
+                <jdbc.password>zzt&amp;r6</jdbc.password> -->
+                <swagger.flag>true</swagger.flag>
+            </properties>
+        </profile>
+
+        <profile>
+            <id>uat</id>
+            <properties>
+                <env>uat</env>
+                <!-- <jdbc.url>jdbc:mysql://192.168.188.130:3306/sljr_pay</jdbc.url>
+                <jdbc.username>zz</jdbc.username>
+                <jdbc.password>zzt&amp;r6</jdbc.password> -->
+                <swagger.flag>true</swagger.flag>
+            </properties>
+        </profile>
+        <profile>
+            <id>uat2</id>
+            <properties>
+                <env>uat2</env>
+                <!-- <jdbc.url>jdbc:mysql://192.168.188.130:3306/sljr_pay</jdbc.url>
+                <jdbc.username>zz</jdbc.username>
+                <jdbc.password>zzt&amp;r6</jdbc.password> -->
+                <swagger.flag>true</swagger.flag>
+            </properties>
+        </profile>
+        <profile>
+            <id>prd</id>
+            <properties>
+                <env>prd</env>
+                <!-- <jdbc.url>jdbc:mysql://192.168.188.130:3306/sljr_pay</jdbc.url>
+                <jdbc.username>zz</jdbc.username>
+                <jdbc.password>zzt&amp;r6</jdbc.password> -->
+                <swagger.flag>true</swagger.flag>
+            </properties>
+        </profile>
+        <profile>
+            <id>pat</id>
+            <properties>
+                <env>pat</env>
+                <swagger.flag>false</swagger.flag>
+            </properties>
+        </profile>
+    </profiles>
+
+    <build>
+        <plugins>
+            <!-- <plugin> <groupId>org.apache.maven.plugins</groupId> <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.19.1</version> <configuration> <systemPropertyVariables> <surefire.security.manager>java.lang.SecurityManager</surefire.security.manager>
+                </systemPropertyVariables> </configuration> </plugin> -->
+
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.1</version>
+                <configuration>
+                    <encoding>${project.build.sourceEncoding}</encoding>
+                    <source>${java_target.version}</source>
+                    <target>${java_target.version}</target>
+                    <showDeprecation>true</showDeprecation>
+                    <showWarnings>true</showWarnings>
+                    <debug>true</debug>
+                    <compilerArguments>
+                        <!-- <extdirs>${basedir}/WebRoot/WEB-INF/lib</extdirs> -->
+                        <extdirs>${basedir}/src/main/webapp/WEB-INF/lib</extdirs>
+                    </compilerArguments>
+                </configuration>
+            </plugin>
+
+
+            <plugin>
+                <groupId>org.mybatis.generator</groupId>
+                <artifactId>mybatis-generator-maven-plugin</artifactId>
+                <version>1.3.2</version>
+                <configuration>
+                    <configurationFile>src/main/resources/spring/generatorConfig.xml</configurationFile>
+                    <verbose>true</verbose>
+                    <overwrite>true</overwrite>
+                </configuration>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.mybatis.generator</groupId>
+                        <artifactId>mybatis-generator-core</artifactId>
+                        <version>1.3.2</version>
+                    </dependency>
+
+                    <dependency>
+                        <groupId>mysql</groupId>
+                        <artifactId>mysql-connector-java</artifactId>
+                        <version>${mysql-connector.version}</version>
+                    </dependency>
+                </dependencies>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <version>2.3</version>
+                <executions>
+                    <execution>
+                        <id>attach-sources</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-eclipse-plugin</artifactId>
+                <version>2.8</version>
+                <configuration>
+                    <downloadJavadocs>true</downloadJavadocs>
+                    <downloadSources>true</downloadSources>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.tomcat.maven</groupId>
+                <artifactId>tomcat7-maven-plugin</artifactId>
+                <configuration>
+                    <port>8080</port>
+                    <path>/${project.build.targetName}</path>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>2.4</version>
+                <configuration>
+                    <warName>${project.build.targetName}</warName>
+                    <webResources>
+                        <resource>
+                            <directory>src/main/resources/</directory>
+                            <targetPath>WEB-INF/classes</targetPath>
+                            <includes>
+                                <include>**/*.jar</include>
+                            </includes>
+                        </resource>
+                    </webResources>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
