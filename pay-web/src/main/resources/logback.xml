@@ -106,7 +106,7 @@
 	<!-- 时间滚动输出 level为 all 日志 -->
 	<appender name="file—all"
 		class="ch.qos.logback.core.rolling.RollingFileAppender">
-		<filter class="ch.qos.logback.classic.com.zz.pay.filter.ThresholdFilter">
+		<filter class="ch.qos.logback.classic.filter.ThresholdFilter">
 			<level>DEBUG</level>
 			<onMatch>ACCEPT</onMatch>
 			<onMismatch>DENY </onMismatch>
