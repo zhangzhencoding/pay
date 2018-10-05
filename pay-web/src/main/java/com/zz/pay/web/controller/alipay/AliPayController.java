@@ -11,6 +11,7 @@ import com.zz.alipay.AliPayApi;
 import com.zz.alipay.AliPayApiConfig;
 import com.zz.alipay.AliPayApiConfigKit;
 import com.zz.pay.web.entity.AliPayBean;
+import com.zz.util.Charsets;
 import com.zz.util.StringUtils;
 import com.zz.vo.AjaxResult;
 import org.slf4j.Logger;
@@ -23,6 +24,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -80,8 +83,11 @@ public class AliPayController extends AliPayApiController {
 			model.setPassbackParams("callback params");
 			model.setProductCode("QUICK_MSECURITY_PAY");
 			String orderInfo = AliPayApi.startAppPay(model, aliPayBean.getDomain() + "/alipay/notify_url");
-			result.success(orderInfo);
+			result.success(URLDecoder.decode(orderInfo,Charsets.UTF_8.name()));
 		} catch (AlipayApiException e) {
+			e.printStackTrace();
+			result.addError("system error:"+e.getMessage());
+		}catch (UnsupportedEncodingException e) {
 			e.printStackTrace();
 			result.addError("system error:"+e.getMessage());
 		}
