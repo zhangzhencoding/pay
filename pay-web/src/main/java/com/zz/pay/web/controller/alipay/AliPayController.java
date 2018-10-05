@@ -10,6 +10,7 @@ import com.alipay.api.response.AlipayTradeCreateResponse;
 import com.zz.alipay.AliPayApi;
 import com.zz.alipay.AliPayApiConfig;
 import com.zz.alipay.AliPayApiConfigKit;
+import com.zz.ext.kit.ZxingKit;
 import com.zz.pay.web.entity.AliPayBean;
 import com.zz.util.Charsets;
 import com.zz.util.StringUtils;
@@ -28,6 +29,7 @@ import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Random;
 
 
 @Controller
@@ -222,8 +224,8 @@ public class AliPayController extends AliPayApiController {
 	 * 扫码支付
 	 */
 	@RequestMapping(value ="/tradePrecreatePay")
-	@ResponseBody
-	public String tradePrecreatePay() {
+	//@ResponseBody
+	public void tradePrecreatePay(HttpServletResponse response) {
 		String subject = "Javen 支付宝扫码支付测试";
 		String totalAmount = "86";
 		String storeId = "123";
@@ -238,11 +240,14 @@ public class AliPayController extends AliPayApiController {
 		try {
 			String resultStr = AliPayApi.tradePrecreatePay(model, notifyUrl);
 			JSONObject jsonObject = JSONObject.parseObject(resultStr);
-			return jsonObject.getJSONObject("alipay_trade_precreate_response").getString("qr_code");
+			String payUrl = jsonObject.getJSONObject("alipay_trade_precreate_response").getString("qr_code");
+			int colorIndex = new Random().nextInt(8);
+			ZxingKit.encode(payUrl, 300, 300, response,"jpg",colorIndex);
+			//return null ;
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return null;
+		//return null;
 	}
 	/**
 	 * 单笔转账到支付宝账户
@@ -623,11 +628,11 @@ public class AliPayController extends AliPayApiController {
 			if (verify_result) {// 验证成功
 				// TODO 请在这里加上商户的业务逻辑程序代码 异步通知可能出现订单重复通知 需要做去重处理
 				System.out.println("notify_url 验证成功succcess");
-				return "success";
+				return "success \n "+ JSONObject.toJSONString(params);
 			} else {
 				System.out.println("notify_url 验证失败");
 				// TODO
-				return "failure";
+				return "failure\n "+ JSONObject.toJSONString(params);
 			}
 		} catch (AlipayApiException e) {
 			e.printStackTrace();
