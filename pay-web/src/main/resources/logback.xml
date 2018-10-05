@@ -1,13 +1,13 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <configuration>
 	<property name="base_log" value="/opt/logs/pay" />
-	<property name="smtpHost" value="www.163.com" />
+	<property name="smtpHost" value="smtp.163.com" />
 	<property name="smtpPort" value="25" />
-	<property name="userName" value="894095789@qq.com" />
-	<property name="passWord" value="QAZ123!@#" />
+	<property name="userName" value="zzwwy@163.com" />
+	<property name="passWord" value="894095zz" />
 	<property name="SSL" value="false" />
 	<property name="email_to" value="894095789@qq.com,zzwwy@163.com" />
-	<property name="email_from" value="894095789@qq.com" />
+	<property name="email_from" value="zzwwy@163.com" />
 	<property name="email_subject" value="【Error 支付系统pay】: %logger" />
 	<appender name="EMAIL" class="ch.qos.logback.classic.net.SMTPAppender">
 		<smtpHost>${smtpHost}</smtpHost>
@@ -106,7 +106,7 @@
 	<!-- 时间滚动输出 level为 all 日志 -->
 	<appender name="file—all"
 		class="ch.qos.logback.core.rolling.RollingFileAppender">
-		<filter class="ch.qos.logback.classic.com.zz.pay.filter.ThresholdFilter">
+		<filter class="ch.qos.logback.classic.filter.ThresholdFilter">
 			<level>DEBUG</level>
 			<onMatch>ACCEPT</onMatch>
 			<onMismatch>DENY </onMismatch>
