@@ -93,8 +93,11 @@ public class AliPayController extends AliPayApiController {
 		}
 		return result;
 	}
-	
-	
+
+	/**
+	 * 手机wap h5 支付
+	 * @param response
+	 */
 	@RequestMapping(value = "/wapPay")
 	@ResponseBody
 	public void wapPay(HttpServletResponse response) {
