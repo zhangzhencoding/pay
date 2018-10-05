@@ -213,7 +213,7 @@ public class ZxingKit {
 		//设置字符集编码格式
 		hints.put(EncodeHintType.CHARACTER_SET, "utf-8");
 		//设置容错等级，在这里我们使用M级别
-		hints.put(EncodeHintType.ERROR_CORRECTION, ErrorCorrectionLevel.M);
+		hints.put(EncodeHintType.ERROR_CORRECTION, ErrorCorrectionLevel.H);
 		//边距
 		hints.put(EncodeHintType.MARGIN,1);
 		// 生成二维码，参数顺序分别为：编码内容，编码类型，生成图片宽度，生成图片高度，设置参数
@@ -236,25 +236,25 @@ public class ZxingKit {
 				Color color = new Color(num1, num2, num3);
 				int colorInt = color.getRGB();
 				// 此处可以修改二维码的颜色，可以分别制定二维码和背景的颜色；
-				int [] colors = {
-						//赤色
-						new Color(255, 0, 0 ).getRGB(),
-						//橙色
-						new Color(255, 165, 0 ).getRGB(),
-						//黄色
-						new Color(255, 255, 0).getRGB(),
-						//绿色
-						new Color(0, 255, 0 ).getRGB(),
-						//青色
-						new Color(0, 255, 255).getRGB(),
-						//蓝色
-						new Color(0, 0, 255 ).getRGB(),
-						//紫色
-						new Color(139, 0, 255 ).getRGB(),
-						//黑色
-						new Color(0, 0, 0 ).getRGB()
-				};
-				pixels[y * width + x] = matrix.get(x, y) ? colors[colorIndex]:0xffffff;// 0x000000:0xffffff
+//				int [] colors = {
+//						//赤色
+//						new Color(255, 0, 0 ).getRGB(),
+//						//橙色
+//						new Color(255, 165, 0 ).getRGB(),
+//						//黄色
+//						new Color(255, 255, 0).getRGB(),
+//						//绿色
+//						new Color(0, 255, 0 ).getRGB(),
+//						//青色
+//						new Color(0, 255, 255).getRGB(),
+//						//蓝色
+//						new Color(0, 0, 255 ).getRGB(),
+//						//紫色
+//						new Color(139, 0, 255 ).getRGB(),
+//						//黑色
+//						new Color(0, 0, 0 ).getRGB()
+//				};
+				pixels[y * width + x] = matrix.get(x, y) ? 0x000000:0xffffff;// 0x000000:0xffffff
 			}
 		}
 
