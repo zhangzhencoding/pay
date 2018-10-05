@@ -11,7 +11,12 @@
 
 	 <bean id="propertyConfigurer"  
         class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">  
-        <property name="location" value="classpath:jdbc.properties" />  
+        <property name="locations">
+			<array>
+				<value>classpath:jdbc.properties</value>
+				<value>classpath:production/alipay.properties</value>
+			</array>
+		</property>
     </bean> 
 	
 

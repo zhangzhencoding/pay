@@ -12,6 +12,7 @@
         <module>pay-interface</module>
         <module>pay-service</module>
         <module>pay-web</module>
+        <module>pay-alipay</module>
     </modules>
 
     <properties>
