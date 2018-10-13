@@ -55,6 +55,7 @@
         <ftpclient.varsion>2.13.2</ftpclient.varsion>
         <springfox.version>2.6.1</springfox.version>
         <protostuff-core-version>1.0.12</protostuff-core-version>
+        <latest.release.version>2.1.5</latest.release.version>
 
     </properties>
 

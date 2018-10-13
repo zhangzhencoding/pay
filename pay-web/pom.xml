@@ -203,7 +203,23 @@
             <artifactId>jstl</artifactId>
             <version>1.2</version>
         </dependency>
+        <!--elastic-job-->
+        <!-- https://mvnrepository.com/artifact/com.dangdang/elastic-job-lite-core -->
+        <dependency>
+            <groupId>com.dangdang</groupId>
+            <artifactId>elastic-job-lite-core</artifactId>
+            <version>2.1.5</version>
+        </dependency>
+
+        <!-- import other module if need -->
+        <!-- https://mvnrepository.com/artifact/com.dangdang/elastic-job-lite-spring -->
+        <dependency>
+            <groupId>com.dangdang</groupId>
+            <artifactId>elastic-job-lite-spring</artifactId>
+            <version>2.1.5</version>
+        </dependency>
     </dependencies>
+
 
     <build>
         <finalName>pay-web</finalName>
