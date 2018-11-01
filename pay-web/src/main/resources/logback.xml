@@ -48,7 +48,7 @@
 	<!-- 时间滚动输出 level为 DEBUG 日志 -->
 	<appender name="file—debug"
 		class="ch.qos.logback.core.rolling.RollingFileAppender">
-		<filter class="ch.qos.logback.classic.com.zz.pay.filter.LevelFilter">
+		<filter class="ch.qos.logback.classic.filter.LevelFilter">
 			<level>DEBUG</level>
 			<onMatch>ACCEPT</onMatch>
 			<onMismatch>DENY </onMismatch>
@@ -66,7 +66,7 @@
 	<!-- 时间滚动输出 level为 ERROR 日志 -->
 	<appender name="file—error"
 		class="ch.qos.logback.core.rolling.RollingFileAppender">
-		<filter class="ch.qos.logback.classic.com.zz.pay.filter.LevelFilter">
+		<filter class="ch.qos.logback.classic.filter.LevelFilter">
 			<level>ERROR</level>
 			<onMatch>ACCEPT</onMatch>
 			<onMismatch>DENY </onMismatch>
@@ -85,7 +85,7 @@
 	<!-- 时间滚动输出 level为 infoo 日志 -->
 	<appender name="file—info"
 		class="ch.qos.logback.core.rolling.RollingFileAppender">
-		<filter class="ch.qos.logback.classic.com.zz.pay.filter.LevelFilter">
+		<filter class="ch.qos.logback.classic.filter.LevelFilter">
 			<level>INFO</level>
 			<onMatch>ACCEPT</onMatch>
 			<onMismatch>DENY </onMismatch>
@@ -122,7 +122,6 @@
 	</appender>
 
 
-	<logger name="com.shanlin.jf" level="DEBUG" />
 	<logger name="com.zz.pay" level="DEBUG" />
 	<logger name="com.gs.jf" level="DEBUG" />
 	<logger name="org.springframework" level="ERROR" />
