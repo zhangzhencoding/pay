@@ -36,7 +36,7 @@ public class CORSFilter extends OncePerRequestFilter {
 		String servletPath = request.getServletPath();
 		logger.info("====================servletPath===================="+servletPath);
 		Map<?, ?> requestParams = request.getParameterMap();
-		logger.info("过滤器拦截请求，支付宝支付结果通知" + JSON.toJSONString(requestParams));
+		logger.info("跨域过滤器拦截请求，请求参数" + JSON.toJSONString(requestParams));
 		filterChain.doFilter(request, response);
 	}
 
