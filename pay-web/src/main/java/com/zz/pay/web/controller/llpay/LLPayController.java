@@ -105,6 +105,7 @@ public class LLPayController {
         String paymod = req.getParameter("paymod");
         if ("plain".equals(paymod)) {
             plainPay(req, order);
+            //post请求
             dispatcher = req.getRequestDispatcher("/gotoPlainPay.jsp");
         } else {
             prepositPay(req, order);
