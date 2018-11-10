@@ -21,7 +21,6 @@ import java.io.OutputStream;
 import java.util.HashMap;
 import java.util.Hashtable;
 import java.util.Map;
-import java.util.Random;
 
 /**
  * google 开源图形码工具Zxing使用
@@ -317,8 +316,8 @@ public class ZxingKit {
 	 */
 	private static BufferedImage genBarcode(String content, int width,int height, String srcImagePath) throws WriterException,IOException {
 		// 图片宽度的一半
-		 int IMAGE_WIDTH = 100;
-		 int IMAGE_HEIGHT = 100;
+		 int IMAGE_WIDTH = 20;
+		 int IMAGE_HEIGHT = 20;
 		 int IMAGE_HALF_WIDTH = IMAGE_WIDTH / 2;
 		 int FRAME_WIDTH = 2;
 		 //二维码写码器
@@ -336,7 +335,7 @@ public class ZxingKit {
 		Map hints = new Hashtable<EncodeHintType, String>();
 		hints.put(EncodeHintType.CHARACTER_SET, "utf-8");
 		//设置容错等级，在这里我们使用M级别
-		hints.put(EncodeHintType.ERROR_CORRECTION, ErrorCorrectionLevel.M);
+		hints.put(EncodeHintType.ERROR_CORRECTION, ErrorCorrectionLevel.H);
 		// 生成二维码
 		BitMatrix matrix = mutiWriter.encode(content, BarcodeFormat.QR_CODE, width, height, hints);
 
@@ -460,6 +459,10 @@ public class ZxingKit {
 //			String text = result.getText();
 //			System.out.println(text);
 //		}
-		System.out.println(new Random().nextInt(4));
+		//System.out.println(new Random().nextInt(4));
+		//String saveImgFilePath = "D://zxing.png";
+		encode("我是Adan205",200, 200, "C:\\Users\\Administrator\\Pictures\\2.jpg", "D:\\p1.png","png");
+		//Boolean encode = encode("我是Adan205", BarcodeFormat.QR_CODE, 3, ErrorCorrectionLevel.H, "png", 200, 200,
+		//		saveImgFilePath);
 	}
 }
