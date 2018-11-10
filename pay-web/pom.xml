@@ -15,6 +15,11 @@
     <dependencies>
         <dependency>
             <groupId>com.zz.pay</groupId>
+            <artifactId>pay-llpay</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>com.zz.pay</groupId>
             <artifactId>pay-alipay</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>

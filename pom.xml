@@ -13,6 +13,7 @@
         <module>pay-service</module>
         <module>pay-web</module>
         <module>pay-alipay</module>
+        <module>pay-llpay</module>
     </modules>
 
     <properties>

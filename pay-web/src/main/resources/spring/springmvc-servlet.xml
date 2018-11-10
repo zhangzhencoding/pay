@@ -17,7 +17,7 @@
 
 	<!-- The static resource file access -->
 	<mvc:resources mapping="/static/**" location="/static/" />
-	
+	<mvc:resources mapping="/images/**" location="/images/" />
 	<mvc:resources location="classpath:/META-INF/resources/"
 		mapping="swagger-ui.html" />
     <mvc:resources location="classpath:/META-INF/resources/webjars/"

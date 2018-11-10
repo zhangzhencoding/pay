@@ -21,7 +21,7 @@
 	
 
 	<import resource="classpath*:spring/spring-jdbc.xml" />
-	<import resource="classpath:spring/spring-elastic-job.xml"/>
+	<!--<import resource="classpath:spring/spring-elastic-job.xml"/>-->
 	<!-- 
 	<import resource="classpath*:common/spring/common-redis-context.xml" />
 	<import resource="classpath*:spring/rabbit-mg.xml"/> 
